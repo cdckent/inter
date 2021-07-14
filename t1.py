@@ -20,22 +20,24 @@ class Log():
             self.url = self.dat[i][2]
             self.data = self.dat[i][3]
             self.aser = self.dat[i][4]
+            self.num = self.dat[i][0]
             # print(self.aser)
             # print(r.text)
             # print(r.status_code)
             r = requests.post(url=self.url, data=self.data.encode())  # 有中文可加  .encode()
             aser_list = self.aser.split(",")
-            print(aser_list)
+            # print(aser_list)
             for j in range(len(aser_list)):
+                # print(aser_list[j])
+                # print(r.text)
                 if aser_list[j] in r.text:
-                    a=True
-                    break
+                    ar=True
                 else:
-                    a=False
-            if a==True:
-                print('测试通过')
+                    ar=False
+            if ar==True:
+                print(f'{self.num}通过')
             else:
-                print('测试不通过')
+                print(f'{self.num}不通过')
 
 
 
